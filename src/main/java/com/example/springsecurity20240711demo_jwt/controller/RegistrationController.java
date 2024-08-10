@@ -23,6 +23,7 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") User user, Model model) {
+        user.setEnabled(true);
         if (userService.usernameExists(user.getUsername())) {
             model.addAttribute("error", "Username already exists.");
             return "register";
